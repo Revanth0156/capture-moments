@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Photographer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #ecf0f1;
+            padding: 50px;
+            text-align: center;
+        }
+        form {
+            background: white;
+            padding: 30px;
+            display: inline-block;
+            border-radius: 16px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+        select, input[type="date"] {
+            padding: 12px;
+            width: 90%;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 12px 30px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1f6391;
+        }
+    </style>
+</head>
+<body>
+    <h2>📅 Book Your Photographer</h2>
+    <form method="POST">
+        <label>Select Photographer:</label><br>
+        <select name="photographer_id" required>
+            {% for p in photographers %}
+                <option value="{{ p.id }}">{{ p.name }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label>Choose Event Category:</label><br>
+        <select name="category" required>
+            <option>Wedding</option>
+            <option>Birthday</option>
+            <option>Travel</option>
+            <option>Pre Wedding</option>
+            <option>College Events</option>
+        </select><br>
+
+        <label>Select Date:</label><br>
+        <input type="date" name="date" required><br>
+
+        <button type="submit">✅ Confirm Booking</button>
+    </form>
+</body>
+</html>

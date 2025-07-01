@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmed - Capture Moments</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+            background: url("{{ url_for('static', filename='images/confirm.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .confirm-box {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            color: #fff8dc;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .confirm-box h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #f1c40f;
+        }
+
+        .confirm-box p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #f39c12;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #e67e22;
+        }
+
+        @media (max-width: 500px) {
+            .confirm-box {
+                padding: 30px 20px;
+            }
+
+            .confirm-box h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confirm-box">
+        <h2>🎉 Booking Confirmed!</h2>
+        <p><strong>Photographer ID:</strong> {{ photographer_id }}</p>
+        <p><strong>Category:</strong> {{ category }}</p>
+        <p><strong>Date:</strong> {{ date }}</p>
+        <a class="btn" href="{{ url_for('dashboard') }}">← Back to Dashboard</a>
+    </div>
+</body>
+</html>

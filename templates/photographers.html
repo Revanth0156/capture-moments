@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photographers - Capture Moments</title>
+    <style>
+        body {
+            background-color: #d7d6dd;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .photographer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .card {
+            background: rgb(252, 251, 253);
+            border-radius: 16px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .card h3 {
+            margin: 15px 0 5px 0;
+            color: #2c3e50;
+        }
+
+        .cost {
+            font-weight: bold;
+            color: #e67e22;
+            margin-bottom: 10px;
+        }
+
+        .skills {
+            margin-bottom: 15px;
+        }
+
+        .skills span {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin: 4px;
+            display: inline-block;
+        }
+
+        .btn {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #27ae60;
+        }
+
+        .back {
+            margin-top: 40px;
+            display: inline-block;
+            text-decoration: none;
+            color: #34495e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📸 Our Photographers</h1>
+    <p>Select your perfect photographer for your next big moment!</p>
+    <p>Total photographers loaded: {{ photographers | length }}</p>
+
+    <div class="photographer-grid">
+        {% for photographer in photographers %}
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/' + photographer.image) }}" alt="{{ photographer.name }}">
+            <h3>{{ photographer.name }}</h3>
+            <div class="cost">{{ photographer.cost }}</div>
+            <div class="skills">
+                {% for skill in photographer.skills %}
+                <span>{{ skill }}</span>
+                {% endfor %}
+            </div>
+            <form method="get" action="{{ url_for('book') }}">
+                <input type="hidden" name="photographer_id" value="{{ photographer.id }}">
+                <button class="btn">Assign Photographer</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+    <br><br>
+    <a href="{{ url_for('dashboard') }}" class="back">← Back to Dashboard</a>
+
+</body>
+</html>
+

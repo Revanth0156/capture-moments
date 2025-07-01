@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Capture Moments</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+            background: url("{{ url_for('static', filename='images/db.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+            color: #fff8dc;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #f1c40f;
+        }
+
+        h3 {
+            font-weight: normal;
+            margin-bottom: 30px;
+            font-size: 18px;
+            color: #f8f8f8;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            background-color: #2980b9;
+            margin: 10px 0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1f618d;
+        }
+
+        .portfolio-btn {
+            background-color: #8e44ad;
+        }
+
+        .portfolio-btn:hover {
+            background-color: #6c3483;
+        }
+
+        .logout-btn {
+            background-color: #e74c3c;
+        }
+
+        .logout-btn:hover {
+            background-color: #c0392b;
+        }
+
+        @media (max-width: 600px) {
+            .overlay {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <h1>Welcome, {{ user }} 👋</h1>
+        <h3>Start capturing your memories with Capture Moments!</h3>
+        <a class="btn" href="{{ url_for('show_photographers') }}">📸 View Photographers</a>
+        <a class="btn portfolio-btn" href="{{ url_for('portfolio') }}">🎒 View Portfolio</a>
+        <a class="btn logout-btn" href="{{ url_for('logout') }}">🚪 Logout</a>
+    </div>
+</body>
+</html>
+
