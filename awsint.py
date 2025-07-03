@@ -7,7 +7,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Step 2: Connect to DynamoDB
-dynamodb = boto3.resource('dynamodb', region_name='ap-south-1')  # Replace with your region
+dynamodb = boto3.resource('dynamodb', region_name='N. Virginia')  # Replace with your region
 
 # Tables
 photographers_table = dynamodb.Table('photographers')
